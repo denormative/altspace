@@ -4,7 +4,10 @@
     "outDir": "../out-tsc/app",
     "module": "es2015",
     "baseUrl": "",
-    "types": []
+    "types": [
+      "chance",
+      "sprintf-js"
+    ]
   },
   "exclude": [
     "test.ts",
