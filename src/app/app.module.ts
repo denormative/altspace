@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { PartyComponent } from './party/party.component';
 import { CharacterComponent } from './character/character.component';
 import { CombatComponent } from './combat/combat.component';
+import { NiceNumberPipe } from './nice-number.pipe';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -29,7 +30,8 @@ const routes: Routes = [
     HomeComponent,
     PartyComponent,
     CharacterComponent,
-    CombatComponent
+    CombatComponent,
+    NiceNumberPipe
   ],
   imports: [
     BrowserModule,

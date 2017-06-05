@@ -5,6 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "hmr": "ng serve --hmr -e=hmr",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -32,6 +33,7 @@
   "devDependencies": {
     "@angular/cli": "^1.1.0",
     "@angular/compiler-cli": "^4.0.0",
+    "@angularclass/hmr": "^1.2.2",
     "@types/chance": "^0.7.33",
     "@types/jasmine": "2.5.38",
     "@types/node": "~6.0.60",
