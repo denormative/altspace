@@ -5,9 +5,7 @@ import { Helpers } from '../assets/Helpers';
   name: 'niceNumber'
 })
 export class NiceNumberPipe implements PipeTransform {
-
   transform(value: any, args?: any): any {
     return Helpers.formatNumberPostfix(value);
   }
-
 }

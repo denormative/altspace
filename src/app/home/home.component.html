@@ -1,108 +1,108 @@
 <!-- <div class="container"><p class="lead">Angular seed app: v<span app-version></span></p></div> -->
 
 <div class="modal fade" id="stats-modal" tabindex="-1" role="dialog" aria-labelledby="stats-label" aria-hidden="true"
-     ng-controller="StatsController">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
-                        class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="stats-label"><i class="fa fa-bar-chart"></i> Statistics</h4>
-            </div>
-            <div class="modal-body">
-                <!-- <ul class="list-group">
-                    <li class="list-group-item">
-                        <i class="fa fa-location-arrow"></i> : <strong>{{ settings.clicks | niceNumber }}</strong></li>
-                    <li class="list-group-item">
-                        <i class="fa fa-database"></i> : <strong>{{ settings.dataSpent | niceNumber }}</strong>
-                        used / <strong>{{ settings.dataCollected | niceNumber }}</strong> collected
-                    </li>
-                    <li class="list-group-item">
-                        <i class="fa fa-money"></i> : <strong>{{ settings.moneySpent | niceNumber }}</strong>
-                        spent / <strong>{{ settings.moneyCollected | niceNumber }}</strong> gathered
-                    </li>
-                </ul> -->
-            </div>
-        </div>
+   ng-controller="StatsController">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+            class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="stats-label"><i class="fa fa-bar-chart"></i> Statistics</h4>
+      </div>
+      <div class="modal-body">
+        <!-- <ul class="list-group">
+          <li class="list-group-item">
+            <i class="fa fa-location-arrow"></i> : <strong>{{ settings.clicks | niceNumber }}</strong></li>
+          <li class="list-group-item">
+            <i class="fa fa-database"></i> : <strong>{{ settings.dataSpent | niceNumber }}</strong>
+            used / <strong>{{ settings.dataCollected | niceNumber }}</strong> collected
+          </li>
+          <li class="list-group-item">
+            <i class="fa fa-money"></i> : <strong>{{ settings.moneySpent | niceNumber }}</strong>
+            spent / <strong>{{ settings.moneyCollected | niceNumber }}</strong> gathered
+          </li>
+        </ul> -->
+      </div>
     </div>
+  </div>
 </div>
 
 <div class="container-fluid" ng-controller="GameController">
-    <div class="row justify-content-sm-center">
-        <div class="col-sm-3">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Game</h3>
-                </div>
-                <div class="panel-body" ng-controller="GameController">
-                    <div class="row" ng-if="game.party===null">
-                        <div class="col">
-                            <button class="btn btn-success btn-block" ng-click="newGame()">
-                                <i class="fa fa-plus"></i> Start New Game
-                            </button>
-                        </div>
-                    </div>
-                    <div class="row" ng-if="game.party!==null">
-                        <div class="col">
-                            <button class="btn btn-warning btn-block">
-                                <i class="fa fa-floppy-o"></i> Load Game
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel-body" ng-controller="SaveController">
-                    <div class="row" ng-if="game.party!==null">
-                        <div class="col">
-                            <p class="text-center text-success">Last Saved: <span ng-cloak>{{ lastSaved | date : 'H:mm' }}</span></p>
-                        </div>
-                    </div>
-                    <div class="row" ng-if="game.party!==null">
-                        <div class="col">
-                            <button class="btn btn-success btn-block" ng-click="saveNow()">
-                                <i class="fa fa-floppy-o"></i> Save Game
-                            </button>
-                        </div>
-                    </div>
-                    <div class="row" ng-if="game.party!==null">
-                        <div class="col">
-                            <button class="btn btn-danger btn-block" ng-click="newGame()">
-                                <i class="fa fa-refresh"></i> Restart Game
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col">
-                            <button class="btn btn-info btn-block" data-toggle="modal"
-                                    data-target="#achievements-modal"><i class="fa fa-trophy"></i> Achievements
-                            </button>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <button class="btn btn-info btn-block" data-toggle="modal" data-target="#stats-modal"><i
-                                    class="fa fa-bar-chart"></i> Statistics
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <div class="row justify-content-sm-center">
+    <div class="col-sm-3">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Game</h3>
         </div>
-        <div class="col-sm-3">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Settings</h3>
-                </div>
-                <div class="panel-body">
-                    <!-- <div class="form-group">
-                        <label for="theme">Theme</label>
-                        <select id="theme" class="form-control" ng-change="setTheme(css.name)" ng-model="css.name"
-                                ng-options="bootstrap.url as bootstrap.name for bootstrap in bootstraps">
-                        </select>
-                    </div> -->
-                </div>
+        <div class="panel-body" ng-controller="GameController">
+          <div class="row" ng-if="game.party===null">
+            <div class="col">
+              <button class="btn btn-success btn-block" ng-click="newGame()">
+                <i class="fa fa-plus"></i> Start New Game
+              </button>
             </div>
+          </div>
+          <div class="row" ng-if="game.party!==null">
+            <div class="col">
+              <button class="btn btn-warning btn-block">
+                <i class="fa fa-floppy-o"></i> Load Game
+              </button>
+            </div>
+          </div>
         </div>
+        <div class="panel-body" ng-controller="SaveController">
+          <div class="row" ng-if="game.party!==null">
+            <div class="col">
+              <p class="text-center text-success">Last Saved: <span ng-cloak>{{ lastSaved | date : 'H:mm' }}</span></p>
+            </div>
+          </div>
+          <div class="row" ng-if="game.party!==null">
+            <div class="col">
+              <button class="btn btn-success btn-block" ng-click="saveNow()">
+                <i class="fa fa-floppy-o"></i> Save Game
+              </button>
+            </div>
+          </div>
+          <div class="row" ng-if="game.party!==null">
+            <div class="col">
+              <button class="btn btn-danger btn-block" ng-click="newGame()">
+                <i class="fa fa-refresh"></i> Restart Game
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col">
+              <button class="btn btn-info btn-block" data-toggle="modal" data-target="#achievements-modal">
+                <i class="fa fa-trophy"></i> Achievements
+              </button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <button class="btn btn-info btn-block" data-toggle="modal" data-target="#stats-modal">
+                <i class="fa fa-bar-chart"></i> Statistics
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+    <div class="col-sm-3">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Settings</h3>
+        </div>
+        <div class="panel-body">
+          <!-- <div class="form-group">
+            <label for="theme">Theme</label>
+            <select id="theme" class="form-control" ng-change="setTheme(css.name)" ng-model="css.name"
+                ng-options="bootstrap.url as bootstrap.name for bootstrap in bootstraps">
+            </select>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
