@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Helpers } from '../assets/Helpers';
+import { Helpers } from '../ts/Helpers';
 
 @Pipe({
   name: 'niceNumber'

@@ -1,3 +1,64 @@
-<p>
-  party works!
-</p>
+<nav class="navbar navbar-toggleable-xl navbar-inverse fixed-bottom bg-inverse">
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav mr-auto">
+    </ul>
+    <ul class="navbar-nav">
+      <li class="nav-item"><a class="nav-link" [routerLink]="['/']">Home</a></li>
+      <li class="nav-item"><a class="nav-link" [routerLink]="['/combat/fight']">
+        <i class="ra ra-crossed-swords"></i> Combat</a>
+      </li>
+      <app-character-dropdown></app-character-dropdown>
+    </ul>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="page-header"><h3>Party</h3></div>
+
+  <div class="row" *ngIf="characters">
+    <div class="col-sm-4"
+       *ngFor="let character of characters; index as i">
+       <div class="card card-outline-secondary mb-2"
+         (mouseenter)="$event.target.classList.add('card-outline-primary'); $event.target.classList.remove('card-outline-secondary')"
+         (mouseleave)="$event.target.classList.remove('card-outline-primary'); $event.target.classList.add('card-outline-secondary')"
+         (click)="router.navigate(['/party/character', i]);">
+        <div class="card-block p-2">
+          <h5 class="card-title">{{character.name.full}}</h5>
+        </div>
+        <table class="table table-sm table-striped mb-2">
+          <tr>
+            <td class="text-center" colspan="4"><strong>{{character.species.name}} {{character.profession.name}}
+            </strong></td>
+          </tr>
+          <tr class="text-center">
+            <td class="fixed"
+              *ngFor="let ability of [character.abilities.str, character.abilities.int]">
+              {{ability.sName}}&nbsp;{{ability.score | spad:2}}
+            </td>
+          </tr>
+          <tr class="text-center">
+            <td class="fixed"
+              *ngFor="let ability of [character.abilities.dex, character.abilities.wil]">
+              {{ability.sName}}&nbsp;{{ability.score | spad:2}}
+            </td>
+          </tr>
+          <tr class="text-center">
+            <td class="fixed"
+              *ngFor="let ability of [character.abilities.con, character.abilities.per]">
+              {{ability.sName}}&nbsp;{{ability.score | spad:2}}
+            </td>
+          </tr>
+          <tr class="text-center">
+            <th class="text-center">Durability:</th>
+            <td>
+              <span class="text-info">{{character.durability.stun.score}}</span> /
+              <span class="text-warning">{{character.durability.wound.score}}</span> /
+              <span class="text-danger">{{character.durability.mortal.score}}</span> /
+              <span class="text-muted">{{character.durability.fatigue.score}}</span>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

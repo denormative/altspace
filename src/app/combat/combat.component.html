@@ -1,3 +1,64 @@
-<p>
-  combat works!
-</p>
+<nav class="navbar navbar-toggleable-xl navbar-inverse fixed-bottom bg-inverse">
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav mr-auto">
+    </ul>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/party/all']"><i class="fa fa-users"></i> Party</a>
+      </li>
+      <app-character-dropdown></app-character-dropdown>
+      <li class="nav-item"><a class="nav-link" (click)="combatActions.debugSkip(game.combat)">Skip (Debug)</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="page-header"><h3>Combat</h3></div>
+
+  <div class="row">
+    <div class="col-sm-3">
+      <ul class="list-group">
+        <li class="list-group-item text-success text-center">
+          <strong class="list-group-item-heading">Amazing</strong></li>
+        <li class="list-group-item justify-content-between" [ngClass]="{'text-success': a.character, 'text-danger': a.enemy}"
+          *ngFor="let a of game.combat.round.amazing">
+          {{a.character ? a.character.name.full : a.enemy.name}}
+          <span class="badge badge-success badge-pill" [ngClass]="{'badge-danger': a.enemy}">{{a.character ? a.score : "&nbsp;"}}</span>
+        </li>
+        <li class="list-group-item text-info text-center">
+          <strong class="list-group-item-heading">Good</strong></li>
+        <li class="list-group-item justify-content-between" [ngClass]="{'text-info': a.character, 'text-danger': a.enemy}"
+          *ngFor="let a of game.combat.round.good">
+          {{a.character ? a.character.name.full : a.enemy.name}}
+          <span class="badge badge-info badge-pill" [ngClass]="{'badge-danger': a.enemy}">{{a.character ? a.score : "&nbsp;"}}</span>
+        </li>
+        <li class="list-group-item text-warning text-center">
+          <strong class="list-group-item-heading">Ordinary</strong></li>
+        <li class="list-group-item justify-content-between" [ngClass]="{'text-warning': a.character, 'text-danger': a.enemy}"
+          *ngFor="let a of game.combat.round.ordinary">
+          {{a.character ? a.character.name.full : a.enemy.name}}
+          <span class="badge badge-warning badge-pill" [ngClass]="{'badge-danger': a.enemy}">{{a.character ? a.score : "&nbsp;"}}</span>
+        </li>
+        <li class="list-group-item text-muted text-center">
+          <strong class="list-group-item-heading">Marginal</strong></li>
+        <li class="list-group-item justify-content-between" [ngClass]="{'text-muted': a.character, 'text-danger': a.enemy}"
+          *ngFor="let a of game.combat.round.marginal">
+          {{a.character ? a.character.name.full : a.enemy.name}}
+          <span class="badge badge-default badge-pill" [ngClass]="{'badge-danger': a.enemy}">{{a.character ? a.score : "&nbsp;"}}</span>
+        </li>
+      </ul>
+    </div>
+    <div class="col-sm-6">
+      <div id="combatMap"></div>
+      <h5 *ngIf="game.combat && game.combat.currentCombatant">Current Combatant: {{game.combat.currentCombatant.character.name.full}}</h5>
+    </div>
+    <div class="col-sm-3">
+      <div class="row">
+        <form class="navbar-form navbar-left">
+          <button type="submit" (click)="newCombat()" class="btn btn-danger">New Combat</button>
+          <button type="submit" (click)="combatActions.debugSkip(game.combat)" class="btn btn-danger">Skip Action (Debug)</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

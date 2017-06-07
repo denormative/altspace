@@ -1,3 +1,135 @@
-<p>
-  character works!
-</p>
+<nav class="navbar navbar-toggleable-xl navbar-inverse fixed-bottom bg-inverse">
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav mr-auto">
+    </ul>
+    <ul class="navbar-nav">
+      <li class="nav-item"><a class="nav-link" [routerLink]="['/combat/fight']">
+        <i class="ra ra-crossed-swords"></i> Combat</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/party/all']"><i class="fa fa-users"></i> Party</a>
+      </li>
+      <app-character-dropdown></app-character-dropdown>
+    </ul>
+  </div>
+</nav>
+
+<div class="container-fluid" *ngIf="character">
+  <div class="page-header"><h3>{{character.name.full}}</h3></div>
+
+  <h5>{{character.species.name}} {{character.profession.name}}
+    <small class="text-muted">{{character.career.name}}</small>
+  </h5>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="card card-outline-secondary mb-2 px-1">
+        <table class="table table-sm table-striped mb-0">
+          <thead>
+            <tr>
+              <th>Ability</th>
+              <th class="text-right">Score</th>
+              <th class="text-right">Untrained</th>
+              <th class="text-right"><abbr title="Resistance Modifier">ResMod</abbr></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let ability of [character.abilities.str, character.abilities.dex, character.abilities.con, character.abilities.int, character.abilities.wil, character.abilities.per]">
+              <td scope="row">{{ability.name}}</td>
+              <td class="text-right">{{ability.score}}</td>
+              <td class="text-right">{{ability.untrained}}</td>
+              <td class="text-right">{{ability.resMod > 0 ? '+' : ''}}{{ability.resMod}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card card-outline-secondary mb-2 px-1">
+        <table class="table table-sm table-striped mb-0">
+          <thead>
+          <tr>
+            <th colspan="3">Durability</th>
+          </tr>
+          </thead>
+          <tbody>
+            <tr [ngClass]="d.name|toClass" *ngFor="let d of [character.durability.stun, character.durability.wound, character.durability.mortal, character.durability.fatigue]">
+              <td>{{d.name}}
+              </td>
+              <td>
+                <ngb-rating [(rate)]="d.score" [(max)]="d.max" readonly="true">
+                  <ng-template let-fill="fill">
+                    <span class="fa fa-circle" *ngIf="fill === 100"></span>
+                    <span class="fa fa-circle-o" *ngIf="fill === 0"></span>
+                  </ng-template>
+                </ngb-rating>
+              </td>
+              <td class="text-center">
+                {{d.score}}/{{d.max}}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card card-outline-secondary mb-2 px-1">
+        <table class="table table-sm table-striped mb-0">
+          <thead>
+          <tr>
+            <th colspan="4">Action Check Score</th>
+          </tr>
+          </thead>
+          <tbody>
+            <tr class="text-center">
+              <td>Marginal</td>
+              <td>Ordinary</td>
+              <td>Good</td>
+              <td>Amazing</td>
+            </tr>
+            <tr class="text-center">
+              <td>&lt;={{character.actionCheckScore.amazing.score}}</td>
+              <td>&lt;={{character.actionCheckScore.good.score}}</td>
+              <td>&lt;={{character.actionCheckScore.ordinary.score}}</td>
+              <td>{{character.actionCheckScore.marginal.score}}+</td>
+            </tr>
+            <tr>
+              <td class="text-right">Step/Die:</td>
+              <td>{{character.actionCheckScore.base.step}} / {{character.actionCheckScore.base.die}}</td>
+              <td class="text-right">Actions/Round:</td>
+              <td>{{character.actionCheckScore.actionsPerRound}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="card card-outline-secondary mb-2 px-1">
+        <table class="table table-sm table-striped mb-0">
+          <thead>
+          <tr>
+            <th>Attack Forms</th>
+            <th class="text-center">Score</th>
+            <th class="text-center">Base</th>
+            <th class="text-center">Type</th>
+            <th class="text-center">Range</th>
+            <th class="text-center">Damage</th>
+          </tr>
+          </thead>
+          <tr class="text-center" *ngFor="let af of character.attackForms">
+            <td class="text-left">{{af.name}}</td>
+            <td>{{af.score.ordinary}} / {{af.score.good}} / {{af.score.amazing}}</td>
+            <td>{{af.baseDice.step}} / {{af.baseDice.die}}</td>
+            <td>{{af.type.form}} / {{af.type.firepower}}</td>
+            <td>
+              <span *ngIf="af.range.personal">Personal</span>
+              <span *ngIf="!af.range.personal">
+                {{af.range.short}} / {{af.range.medium}} / {{af.range.long}}
+              </span>
+            </td>
+            <td>{{af.damage.ordinary}} / {{af.damage.good}} / {{af.damage.amazing}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

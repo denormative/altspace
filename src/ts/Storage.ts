@@ -14,7 +14,11 @@ export class Storage {
   }
 
   static load(key: string) {
-      return JSON.parse(Storage._s.getItem(key));
+    const item = Storage._s.getItem(key)
+    if (item !== 'undefined' && item != null) {
+      console.log(item);
+        return JSON.parse(item);
+    }
   }
 
   static clear() {

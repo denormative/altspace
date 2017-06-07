@@ -4,3 +4,36 @@
 @import "../node_modules/bootswatch/cyborg/variables";
 @import '../node_modules/bootstrap/scss/bootstrap';
 @import "../node_modules/bootswatch/cyborg/bootswatch";
+@import './assets/fonts/fonts.css';
+
+body {
+  padding-bottom: 70px; // FIXME: Is this necessary? Should it be rems?
+  font-family: "Play", "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+h3,
+.h3 {
+  text-align: center;
+}
+
+.page-header {
+  margin: 1rem 0;
+}
+
+// TODO: Work around: https://github.com/twbs/bootstrap/issues/22058
+.navbar-toggleable-xl .navbar-nav .dropdown-menu {
+  position: absolute;
+}
+
+h5.card-title {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.fixed {
+  font-family: 'Share Tech Mono', monospace;
+}
+
+a.nav-link.dropdown-toggle {
+  cursor: pointer;
+}
