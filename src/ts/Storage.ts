@@ -16,8 +16,7 @@ export class Storage {
   static load(key: string) {
     const item = Storage._s.getItem(key)
     if (item !== 'undefined' && item != null) {
-      console.log(item);
-        return JSON.parse(item);
+      return JSON.parse(item);
     }
   }
 

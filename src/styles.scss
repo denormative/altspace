@@ -6,9 +6,13 @@
 @import "../node_modules/bootswatch/cyborg/bootswatch";
 @import './assets/fonts/fonts.css';
 
+body,
+button {
+  font-family: "Play", "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
 body {
   padding-bottom: 70px; // FIXME: Is this necessary? Should it be rems?
-  font-family: "Play", "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 h3,

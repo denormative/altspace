@@ -51,6 +51,7 @@ export class Game {
       this.settings = new Settings();
     }
     else {
+      console.log('settings loaded...');
       this.settings = s;
     }
 
@@ -61,7 +62,7 @@ export class Game {
       this.resetGame();
     }
     else {
-      console.log(g);
+      console.log('game loaded...');
       this.party = g.party;
       this.combat = g.combat;
     }

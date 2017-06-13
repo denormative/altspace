@@ -134,10 +134,10 @@ export class Combat {
       }
     });
 
-    round.amazing.sort((a, b) => a.score - b.score); // = _.sortBy(round.amazing, 'score');
-    round.good.sort((a, b) => a.score - b.score); //  = _.sortBy(round.good, 'score');
-    round.ordinary.sort((a, b) => a.score - b.score); //  = _.sortBy(round.ordinary, 'score');
-    round.marginal.sort((a, b) => a.score - b.score); //  =  _.sortBy(round.marginal, 'score');
+    round.amazing.sort((a, b) => a.score - b.score);
+    round.good.sort((a, b) => a.score - b.score);
+    round.ordinary.sort((a, b) => a.score - b.score);
+    round.marginal.sort((a, b) => a.score - b.score);
 
     combat.round = round;
     combat.finished = false;
