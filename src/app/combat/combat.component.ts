@@ -10,6 +10,11 @@ import { Combat } from '../../ts/Combat'
   styleUrls: ['./combat.component.scss']
 })
 export class CombatComponent implements OnInit {
+  menu = {
+    party: true,
+    characters: true,
+    debugSkip: true,
+  };
   game: Game;
   combatActions: CombatActions;
 

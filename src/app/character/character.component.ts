@@ -9,6 +9,11 @@ import { GameService } from '../game.service'
   styleUrls: ['./character.component.scss']
 })
 export class CharacterComponent implements OnInit {
+  menu = {
+    combat: true,
+    party: true,
+    characters: true,
+  };
   character: Character;
 
   constructor(private route: ActivatedRoute, private gameService: GameService) { }

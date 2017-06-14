@@ -15,6 +15,7 @@ import { GameService } from './game.service';
 import { SpadPipe } from './spad.pipe';
 import { ToClassPipe } from './to-class.pipe';
 import { CharacterDropdownComponent } from './character-dropdown.component';
+import { MenuComponent } from './menu.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -35,7 +36,8 @@ const routes: Routes = [
     NiceNumberPipe,
     SpadPipe,
     ToClassPipe,
-    CharacterDropdownComponent
+    CharacterDropdownComponent,
+    MenuComponent
   ],
   imports: [
     NgbModule.forRoot(),

@@ -9,6 +9,10 @@ import { Storage } from '../../ts/Storage'
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
+  menu = {
+    savedTime: true,
+    party: true,
+  };
   public game: Game;
 
   constructor(private gameService: GameService) {
